@@ -1,3 +1,64 @@
+<!doctype html>
 <html>
-hello world
+  <head>
+    <title>Search for a Value</title>
+  </head>
+
+  <body>
+    <h1>Search for a Value</h1>
+
+    <label>Enter Array Values:</label>
+    <input type="text" id="arrayInput" />
+    <input type="button" onclick="enteredArray()" value="Enter"/>
+    <br> <br>
+
+    <label>Search Value:</label>
+    <input type="text" id="searchInput" />
+    <input type="button" onclick="searchArray()" value="Search" />
+
+    <hr>
+
+    <h2>Search Result</h2>
+
+    <p id="result"></p>
+
+    <script>
+      let array = [];
+
+      function enteredArray(){
+        let input = document.getElementById("arrayInput").value;
+
+        array = input.split(" "); //parama split kahit no comma 
+
+        alert("Array entered succesfully")
+      }
+
+      function searchArray() {
+        //reminder to enter value first bago makapag search
+        if (array.length == 0) {
+          alert("Enter an array value first.");
+          return;
+        }
+
+
+        let search = document.getElementById("searchInput").value;
+        let result = document.getElementById("result");
+        let found = false;
+
+        for (let i = 0; i < array.length; i++) {
+          if (array[i]== search) {
+            result.innerHTML =
+              "Value found: " + array[i] + "<br>Index: " + i;
+
+            found = true;
+            break;
+          }
+        }
+        
+        if (found == false) {
+          result.innerHTML = "Value does not exist in the array.";
+        }
+      }
+    </script>
+  </body>
 </html>
